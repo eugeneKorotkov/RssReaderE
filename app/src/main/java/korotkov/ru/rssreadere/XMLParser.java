@@ -70,8 +70,7 @@ public class XMLParser extends Observable {
                     @SuppressWarnings("deprecation")
 
                     //Date to stringconvertation
-
-                            Date pubDate = new Date(xmlPullParser.nextText());
+                    Date pubDate = new Date(xmlPullParser.nextText());
                     Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                     String s = formatter.format(pubDate);
                     currentNews.setPubDate(s);

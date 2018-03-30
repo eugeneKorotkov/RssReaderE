@@ -40,18 +40,18 @@ class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(MainAdapter.ViewHolder holder,final int position) {
 
-        holder.mTitle.setText(mDataset.get(position).getTitle());
+        News currentNews = mDataset.get(position);
 
-        holder.mPubDate.setText(mDataset.get(position).getPubDate());
+        holder.mTitle.setText(currentNews.getTitle());
+        holder.mPubDate.setText(currentNews.getPubDate());
 
         //loadingImage
-
-        /*Picasso.with(mContext)
-                .load(mDataset.get(position).getImage())
+        Picasso.with(mContext)
+                .load(currentNews.getImage())
                 .placeholder(R.drawable.placeholder)
                 .fit()
                 .centerCrop()
-                .into(holder.mImageView);*/
+                .into(holder.mImageView);
     }
 
     @Override
@@ -59,14 +59,15 @@ class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         return mDataset.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView mTitle;
-        public TextView mPubDate;
-        public ImageView mImageView;
+        TextView mTitle;
+        TextView mPubDate;
+        ImageView mImageView;
 
         public ViewHolder(View itemView) {
             super(itemView);
+
             mTitle = itemView.findViewById(R.id.titleN);
             mPubDate = itemView.findViewById(R.id.pubDate);
             mImageView = itemView.findViewById(R.id.imageN);
